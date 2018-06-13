@@ -1,4 +1,4 @@
-pragma solidity ^0.4.11;
+pragma solidity ^0.4.24;
 
 import './SafeMath.sol';
 import './Crowdsale.sol';
@@ -12,7 +12,7 @@ contract CappedCrowdsale is Crowdsale {
 
   uint256 public cap;
 
-  function CappedCrowdsale(uint256 _cap) {
+  constructor(uint256 _cap) public {
     require(_cap > 0);
     cap = _cap;
   }

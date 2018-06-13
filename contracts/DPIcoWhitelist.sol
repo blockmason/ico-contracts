@@ -1,4 +1,4 @@
-pragma solidity 0.4.15;
+pragma solidity ^0.4.24;
 
 contract DPIcoWhitelist {
     address public admin;
@@ -21,12 +21,12 @@ contract DPIcoWhitelist {
         _;
     }
 
-    function DPIcoWhitelist() {
+    constructor() public {
         admin = msg.sender;
         isOn = false;
     }
 
-    function () {
+    function () public {
         signUp();
     }
 

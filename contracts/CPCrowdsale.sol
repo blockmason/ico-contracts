@@ -1,4 +1,4 @@
-pragma solidity 0.4.15;
+pragma solidity ^0.4.24;
 
 import './CPToken.sol';
 import './DPIcoWhitelist.sol';
@@ -19,10 +19,11 @@ contract CPCrowdsale is CappedCrowdsale, FinalizableCrowdsale, Pausable {
     uint256 public maxWhitelistPurchaseWei;
     uint256 public openWhitelistEndTime;
 
-    function CPCrowdsale(uint256 _startTime, uint256 _endTime, uint256 _whitelistEndTime, uint256 _openWhitelistEndTime, address _wallet, address _tiersContract, address _whitelistContract, address _airdropWallet, address _advisorWallet, address _stakingWallet, address _privateSaleWallet)
+    constructor(uint256 _startTime, uint256 _endTime, uint256 _whitelistEndTime, uint256 _openWhitelistEndTime, address _wallet, address _tiersContract, address _whitelistContract, address _airdropWallet, address _advisorWallet, address _stakingWallet, address _privateSaleWallet)
         CappedCrowdsale(45000 ether) // crowdsale capped at 45000 ether
         FinalizableCrowdsale()
         Crowdsale(_startTime, _endTime, 1, _wallet)  // rate = 1 is a dummy value; we use tiers instead
+        public
     {
         token.mint(_wallet, 23226934 * (10 ** 18));
         token.mint(_airdropWallet, 5807933 * (10 ** 18));
@@ -55,7 +56,7 @@ contract CPCrowdsale is CappedCrowdsale, FinalizableCrowdsale, Pausable {
         uint256 tokens = at.calculateTokens(weiAmount, weiRaised);
         weiRaised = weiRaised.add(weiAmount);
         token.mint(beneficiary, tokens);
-        TokenPurchase(msg.sender, beneficiary, weiAmount, tokens);
+        emit TokenPurchase(msg.sender, beneficiary, weiAmount, tokens);
         forwardFunds();
     }
 
