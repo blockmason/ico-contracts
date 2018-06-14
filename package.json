@@ -2,26 +2,27 @@
   "name": "tce-contracts",
   "version": "1.0.0",
   "description": "`0xdaF5520A1BA8D71CDb81C69c72D736dAb058C602`",
-  "main": "truffle.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "scripts/compile.sh",
+    "console": "scripts/console.sh",
+    "test": "scripts/test.sh"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/timgalebach/tce-contracts.git"
+    "url": "git+https://github.com/blockmason/tce-contracts.git"
   },
   "author": "",
-  "license": "All rights reserved by BlockMason Inc.",
+  "license": "SEE LICENSE IN LICENSE.md",
   "bugs": {
-    "url": "https://github.com/timgalebach/tce-contracts/issues"
+    "url": "https://github.com/blockmason/tce-contracts/issues"
   },
-  "homepage": "https://github.com/timgalebach/tce-contracts#readme",
+  "homepage": "https://github.com/blockmason/tce-contracts#readme",
   "devDependencies": {
-    "chai": "^4.1.2",
-    "chai-as-promised": "^7.1.1",
-    "chai-bignumber": "^2.0.1",
-    "ethereumjs-testrpc": "4.1.1",
-    "truffle": "3.4.9",
-    "zeppelin-solidity": "1.3.0"
+    "chai": "4.1.2",
+    "chai-as-promised": "7.1.1",
+    "chai-bignumber": "2.0.2",
+    "ganache-cli": "6.1.3",
+    "truffle": "4.1.11",
+    "zeppelin-solidity": "1.10.0"
   }
 }

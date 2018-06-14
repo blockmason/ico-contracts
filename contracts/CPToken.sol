@@ -1,4 +1,4 @@
-pragma solidity 0.4.15;
+pragma solidity ^0.4.24;
 
 import './MintableToken.sol';
 import './LimitedTransferToken.sol';
@@ -10,7 +10,7 @@ contract CPToken is MintableToken, LimitedTransferToken {
 
     bool public saleOver = false;
 
-    function CPToken() {
+    constructor() public {
     }
 
     function endSale() public onlyOwner {
@@ -21,7 +21,7 @@ contract CPToken is MintableToken, LimitedTransferToken {
     /**
      * @dev returns all user's tokens if time >= releaseTime
      */
-    function transferableTokens(address holder, uint64 time) public constant returns (uint256) {
+    function transferableTokens(address holder, uint64) public constant returns (uint256) {
         if (saleOver)
             return balanceOf(holder);
         else

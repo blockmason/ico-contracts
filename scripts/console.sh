@@ -10,14 +10,18 @@
 # >>> { [String: '1.425e+25'] s: 1, e: 25, c: [ 142500000000 ] }
 
 function cleanup {
-    kill -9 $testrpc_pid
+  kill -9 "${ganache_pid}"
 }
 
 trap cleanup EXIT
 
-testrpc -p 8547 &
-testrpc_pid=$!
-echo "Started testrpc, pid ${testrpc_pid}"
+ganache \
+  -p 8547 \
+&
+
+ganache_pid=$!
+echo "Started ganache, pid ${ganache_pid}"
+
 truffle compile
 truffle migrate --reset --network console
 truffle console --network console
